@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.GeoLocationDataPage"
+             xmlns:vm="clr-namespace:Farmiot.ViewModels"
+             x:DataType="vm:MainViewModel"
+             xmlns:maps ="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             BackgroundImageSource="oleaves.jpeg"
+             Title="Geo Location Dashboard">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="LogOut"  Command="{Binding LogOutCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid x:DataType="vm:MainViewModel" Margin="10,15,10,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <maps:Map Grid.ColumnSpan="2" x:Name="map" MapType="Street" ItemsSource="{Binding Positions}">
+                <maps:Map.ItemTemplate>
+                    <DataTemplate>
+                        <maps:Pin Position="{Binding Position }"
+                                  Address=""
+                                  Label="Current Location"
+                                  x:Name="Pin">
+                            
+                        </maps:Pin>
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+
+            <Frame Grid.Row="1" Style="{StaticResource Frame}">
+                <Frame CornerRadius="15" BorderColor="{StaticResource oColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" Text="Latitude"></Label>
+                        <Label VerticalOptions="Center" Style="{StaticResource lbll}"  Text="{Binding GeoLocationData.Latitude, StringFormat='{0} '}"></Label>
+                    </StackLayout>
+
+                </Frame>
+            </Frame>
+
+            <Frame BorderColor="{StaticResource oColor}" Grid.Row="1" Grid.Column="1" Style="{StaticResource Frame}"  Margin="0,0,0,10">
+                <Frame CornerRadius="15" BorderColor="{StaticResource oColor}">
+                     <StackLayout>
+                        <Label Style="{StaticResource lbl}" Text="Longtitude"></Label>
+                        <Label VerticalOptions="Center" Style="{StaticResource lbll}"  Text="{Binding GeoLocationData.Longtitude, StringFormat='{0}'}"></Label>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame BorderColor="{StaticResource oColor}" Style="{StaticResource Frame}" Grid.Row="2" Grid.Column="0">
+                <Frame CornerRadius="15" BorderColor="DarkOrange" >
+                     <StackLayout>
+                        <Label Style="{StaticResource lbl}" Text="Pitch"></Label>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding GeoLocationData.PitchAngle, StringFormat='{0}'}"></Label>
+                        <Button Style="{StaticResource obuttonStyle}" VerticalOptions="Center" Command="{Binding GraphCommand}" Clicked="PitchButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+
+            <Frame BorderColor="DarkOrange" Style="{StaticResource Frame}" Grid.Row="2" Grid.Column="1">
+                <Frame CornerRadius="15" BorderColor="DarkOrange" >
+                     <StackLayout>
+                        <Label Style="{StaticResource lbl}" Text="Roll"></Label>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding GeoLocationData.RollAngle, StringFormat='{0}'}"></Label>
+                        <Button Style="{StaticResource obuttonStyle}" VerticalOptions="Center" Command="{Binding GraphCommand}" Clicked="RollButton_Clicked"></Button>
+                     </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame BorderColor="DarkOrange" Style="{StaticResource Frame}" Grid.Row="3" Grid.Column="0">
+                <Frame CornerRadius="15" BorderColor="DarkOrange" >
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" Text="Vibration"></Label>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding GeoLocationData.Vibration, StringFormat='{0}'}"></Label>
+                        <Button Style="{StaticResource obuttonStyle}" VerticalOptions="Center" Command="{Binding GraphCommand}" Clicked="VibButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame  Grid.Row="3" Grid.Column="1" BorderColor="DarkOrange" Style="{StaticResource Frame}" >
+
+                <Frame  CornerRadius="15" BorderColor="DarkOrange">
+                    <StackLayout >
+                        <Label Style="{StaticResource lbl}" Text="Buzzer"></Label>
+                        <Switch HorizontalOptions="Center" Margin="0,15" IsToggled="{Binding GeoLocationData.BuzzerState}">
+                            <Switch.Behaviors>
+                                <xct:EventToCommandBehavior EventName="Toggled"
+                                                            Command="{Binding ControlBuzzerCommand}"></xct:EventToCommandBehavior>
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </Frame>
+            
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

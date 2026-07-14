@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.SecurityDataPage"
+             xmlns:vm="clr-namespace:Farmiot.ViewModels"
+             x:DataType="vm:MainViewModel"
+             Title="Security Dashboard"
+             BackgroundImageSource="bleaves.jpg"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="LogOut"  Command="{Binding LogOutCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Margin="10,15,10,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource blueFrame}" >
+                <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" TextColor="{StaticResource frameColor}" Text="Noise Level"/>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding SecurityData.NoiseLevel}"/>
+                        <Button Style="{StaticResource bbuttonStyle}" Command="{Binding GraphCommand}" Clicked="NoiseButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource blueFrame}" >
+            <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}" >
+                <StackLayout>
+                    <Label Style="{StaticResource lbl}" Text="Luminosity" TextColor="{StaticResource frameColor}"/>
+                    <Label Style="{StaticResource lbll}"  Text="{Binding SecurityData.LuminosityLevel}"/>
+                    <Button Style="{StaticResource bbuttonStyle}" Command="{Binding GraphCommand}" Clicked="LumiButton_Clicked"></Button>
+                </StackLayout>
+            </Frame>
+            </Frame>
+
+            <Frame Grid.Column="0" Grid.Row="1" Style="{StaticResource blueFrame}" >
+                <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" TextColor="{StaticResource frameColor}" Text="Motion"/>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding SecurityData.MotionState}"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+             <Frame  Grid.Column="1" Grid.Row="1" Style="{StaticResource blueFrame}">
+                <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" TextColor="{StaticResource frameColor}" Text="Door"/>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding SecurityData.DoorState}"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Column="1" Grid.Row="2" Style="{StaticResource blueFrame}">
+                <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}">
+                    <StackLayout>
+                        <Label  Style="{StaticResource lbl}" TextColor="{StaticResource frameColor}" Text="Lock"/>
+                        <!--<Label Style="{StaticResource lbll}"  Text="{Binding SecurityData.DoorLockState}"/>-->
+                        <Switch HorizontalOptions="Center" Margin="0,15" IsToggled="{Binding SecurityData.DoorLockState}">
+                            <Switch.Behaviors>
+                                <xct:EventToCommandBehavior EventName="Toggled"
+                                                            Command="{Binding ControlDoorCommand}"></xct:EventToCommandBehavior>
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame  Grid.Column="0" Grid.Row="2" Style="{StaticResource blueFrame}"  >
+
+                <Frame CornerRadius="15" BorderColor="{StaticResource frameColor}">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl}" TextColor="{StaticResource frameColor}" Text="Buzzer"/>
+                        <!--<Label Style="{StaticResource lbll}" Text="{Binding SecurityData.BuzzerState}"/>-->
+
+                        <Switch HorizontalOptions="Center" Margin="0,15" IsToggled="{Binding SecurityData.BuzzerState}" >
+                            <Switch.Behaviors>
+                                <xct:EventToCommandBehavior EventName="Toggled"
+                                                            Command="{Binding ControlBuzzerCommand}"></xct:EventToCommandBehavior>
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+    
+    
+</ContentPage>

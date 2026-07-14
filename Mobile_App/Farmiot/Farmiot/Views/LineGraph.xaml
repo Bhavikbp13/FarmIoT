@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.LineGraph"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:vm="clr-namespace:Farmiot.ViewModels"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             x:DataType="vm:MainViewModel"
+             Title="{Binding GraphToGet}">
+
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="Center" x:DataType="vm:MainViewModel">
+
+            <Label Style="{StaticResource lbl}" Text="Chart"></Label>
+            <microcharts:ChartView Chart="{Binding Chart}" x:Name="chartView" HeightRequest="200" VerticalOptions="CenterAndExpand"/>
+
+            
+             <TableView HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection  Title="Threshold">
+                        <EntryCell Text="{Binding ThresholdValue}" Label="Threshold"></EntryCell>
+                        <ViewCell>
+                            <Label Margin="0,0,0,0"></Label>
+                        </ViewCell>
+                    </TableSection>
+
+                    <TableSection>
+                        <ViewCell>
+
+                          <Frame HeightRequest="100" CornerRadius="12" Padding="0">
+
+                            <Grid>
+                                <magic:GradientView>
+                                    <magic:LinearGradient Angle="45">
+                                        <magic:GradientStop Color="HotPink" />
+                                        <magic:GradientStop Color="{StaticResource frameColor}" />
+                                    </magic:LinearGradient>
+                                </magic:GradientView>
+
+                                <Button HeightRequest="100" Command="{Binding SetThresholdCommand }" BorderColor="Transparent" BackgroundColor="Transparent" FontAttributes="Bold" FontSize="Large" Text="Set Threshold" VerticalOptions="Center" HorizontalOptions="Center"></Button>
+                            </Grid>
+
+                          </Frame>
+                        </ViewCell>
+
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

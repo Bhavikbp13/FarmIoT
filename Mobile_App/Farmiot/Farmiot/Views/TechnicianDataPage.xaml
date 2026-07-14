@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.TechnicianDataPage"
+             Title="Plant Dashboard"
+             BackgroundImageSource="wleaves.jpeg"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="LogOut"  Command="{Binding LogOutCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+         <Grid Margin="10,15,10,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+             <Frame Grid.Column="0" Grid.Row="0" CornerRadius="15" Padding="2" BorderColor="DarkGreen" Margin="0,0,0,10">
+               <Frame CornerRadius="15" BorderColor="DarkGreen" >
+                    <StackLayout>
+                        <Label TextColor="DarkGreen" Style="{StaticResource lbl}" Text="Temperature"/>
+                        <Label Style="{StaticResource lbll}" Text="{Binding PlantData.Temperature}"/>
+                        <Button Style="{StaticResource buttonStyle}" Command="{Binding GraphCommand}" Clicked="TempButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+             </Frame>
+     
+             <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource GFrame}">
+                <Frame CornerRadius="15"  BorderColor="DarkGreen" >
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl} " TextColor="DarkGreen" Text="Humidity"/>
+                        <Label  Style="{StaticResource lbll}"  Text="{Binding PlantData.Humidity}"/>
+                        <Button Style="{StaticResource buttonStyle}" Command="{Binding GraphCommand}" Clicked="HumiButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Column="0" Grid.Row="1" Style="{StaticResource GFrame}">
+                <Frame  CornerRadius="15" BorderColor="DarkGreen">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl} " TextColor="DarkGreen" Text="Moisture"/>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding PlantData.Moisture}"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource GFrame}">
+                <Frame CornerRadius="15" BorderColor="DarkGreen"  >
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl} " TextColor="DarkGreen" Text="Water Level"/>
+                        <Label Style="{StaticResource lbll}"  Text="{Binding PlantData.Water}"/>
+                        <Button Style="{StaticResource buttonStyle}" Command="{Binding GraphCommand}" Clicked="WaterButton_Clicked"></Button>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Column="0" Grid.Row="2" Style="{StaticResource GFrame}">
+                <Frame CornerRadius="15" BorderColor="DarkGreen" >
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl} " TextColor="DarkGreen" Text="Fan"/>
+                        <!--<Label Style="{StaticResource lbll}"  Text="{Binding PlantData.FanState}"/>-->
+                        <Switch HorizontalOptions="Center" Margin="0,15" IsToggled="{Binding PlantData.FanState}">
+                            <Switch.Behaviors>
+                                <xct:EventToCommandBehavior EventName="Toggled"
+                                                        Command="{Binding ControlFanCommand}"></xct:EventToCommandBehavior>
+                        </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+             <Frame Grid.Column="1" Grid.Row="2" Style="{StaticResource GFrame}">
+                <Frame CornerRadius="15" BorderColor="DarkGreen">
+                    <StackLayout>
+                        <Label Style="{StaticResource lbl} "  TextColor="DarkGreen" Text="Light"/>
+                         <!--<Label Style="{StaticResource lbll}"  Text="{Binding PlantData.Light}"/>-->
+                        <Switch  HorizontalOptions="CenterAndExpand" Margin="0,15" IsToggled="{Binding PlantData.Light}">
+                             <Switch.Behaviors>
+                                <xct:EventToCommandBehavior EventName="Toggled"
+                                                        Command="{Binding ControlLightCommand}"></xct:EventToCommandBehavior>
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

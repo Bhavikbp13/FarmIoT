@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.ContainersListPage"
+             Title="Containers List"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="LogOut"  Command="{Binding LogOutCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <StackLayout Margin="20,50,20,0">
+             <Frame Margin="0,0,0,20" HeightRequest="120" CornerRadius="12" Padding="0">
+
+                <Grid>
+                    <magic:GradientView>
+                        <magic:LinearGradient Angle="45">
+                            <magic:GradientStop Color="GreenYellow" />
+                            <magic:GradientStop Color="{StaticResource frameColor}" />
+                        </magic:LinearGradient>
+                    </magic:GradientView>
+
+                   <Button HeightRequest="120" Command="{Binding NavigateToDataPagesCommand}" BorderColor="Transparent" BackgroundColor="Transparent" Margin="50,0,0,0" FontAttributes="Bold" FontSize="Large" Text="Container 1" VerticalOptions="Center" HorizontalOptions="Center"></Button>
+                    <Image Margin="60,0,0,0" HorizontalOptions="Start" Source="icon.png"/>
+                </Grid>
+
+              </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

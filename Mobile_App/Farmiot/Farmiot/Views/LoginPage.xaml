@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.Views.LoginPage"
+             xmlns:vm="clr-namespace:Farmiot.ViewModels"
+             x:DataType="vm:LoginViewModel"
+             Title="Login"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="LightCyan">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" x:DataType="vm:LoginViewModel">
+            <Button Command="{Binding Fleet}" Style="{StaticResource bbuttonStyle}" Text="Fleet Manager" Margin="0,0,0,10"/>
+            <Button Command="{Binding Tech}" Style="{StaticResource bbuttonStyle}" Text="Technician" Margin="0,0,0,70"/>
+
+            <Image Scale="1.5" Source="login.png" Margin="0,0,0,30"></Image>
+            <Entry x:Name="username" Text="{Binding Username}" Placeholder="Enter your username"></Entry>
+            <Entry x:Name="passowrd" Text="{Binding Password}" IsPassword="True" Placeholder="Enter your password" Margin="0,0,0,15"></Entry>
+            <Button Text="Login" Command="{Binding LoginCommand}" Padding="15" ></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

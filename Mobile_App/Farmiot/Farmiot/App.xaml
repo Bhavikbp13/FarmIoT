@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmiot.App">
+    <Application.Resources>
+
+        <Color x:Key="backColor">#6b8e23</Color>
+        <Color x:Key="frameColor">#1AA7EC</Color>
+        <Color x:Key="oColor">#FF781F</Color>
+        <Color x:Key="Color"> #006400</Color>
+
+        <x:Int32 x:Key="roundCorners">8</x:Int32>
+        <x:Int32 x:Key="Corners">15</x:Int32>
+        <x:Int32 x:Key="pad">2</x:Int32>
+
+        <!--Lables -->
+        <Style TargetType="Label" x:Key="lbl">
+           <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        
+        <Style TargetType="Label" x:Key="lbll">
+           <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <!-- Frames -->
+        <Style TargetType="Frame" x:Key="blueFrame">
+             <Setter Property="Margin" Value="0,0,0,10"></Setter>
+           <Setter Property="CornerRadius" Value="{StaticResource Corners}"/>
+           <Setter Property="BorderColor" Value="{StaticResource frameColor}"/>
+           <Setter Property="Padding" Value="{StaticResource pad}"/>
+        </Style>
+
+        <Style TargetType="Frame" x:Key="Frame">
+            <Setter Property="Margin" Value="0,0,0,10"></Setter>
+            <Setter Property="BorderColor" Value="{StaticResource oColor}"/>
+           <Setter Property="CornerRadius" Value="{StaticResource Corners}"/>
+           <Setter Property="Padding" Value="{StaticResource pad}"/>
+        </Style>
+
+        
+        <Style TargetType="Frame" x:Key="GFrame">
+            <Setter Property="Margin" Value="0,0,0,10"></Setter>
+            <Setter Property="BorderColor" Value="{StaticResource Color}"/>
+           <Setter Property="CornerRadius" Value="{StaticResource Corners}"/>
+           <Setter Property="Padding" Value="{StaticResource pad}"/>
+        </Style>
+
+
+
+        <!--Buttons-->
+        <Style TargetType="Button" x:Key="buttonStyle">
+            <Setter Property="Text" Value="Details"></Setter>
+            <Setter Property="Margin" Value="0,20" /> 
+            <Setter Property="CornerRadius" Value="{StaticResource roundCorners}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource backColor}"/>
+            <Setter Property="VerticalOptions" Value="Center">  </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="bbuttonStyle">
+            <Setter Property="Text" Value="Details"></Setter>
+            <Setter Property="Margin" Value="0,20" /> 
+            <Setter Property="CornerRadius" Value="{StaticResource roundCorners}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource frameColor}"/>
+            <Setter Property="VerticalOptions" Value="Center">  </Setter>
+        </Style>
+
+        
+        <Style TargetType="Button" x:Key="obuttonStyle">
+            <Setter Property="Text" Value="Details"></Setter>
+            <Setter Property="CornerRadius" Value="{StaticResource roundCorners}"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource oColor}"/>
+            <Setter Property="VerticalOptions" Value="Center">  </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             x:Class="Farmiot.Views.FleetManagerChoicePage"
+             Title="Fleet Manager Choice">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="LogOut"  Command="{Binding LogOutCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="20,50,20,0" Orientation="Vertical">
+             <Frame Margin="0,0,0,20" HeightRequest="120" CornerRadius="12" Padding="0">
+
+                <Grid>
+                    <magic:GradientView>
+                        <magic:LinearGradient Angle="45">
+                            <magic:GradientStop Color="LightGreen" />
+                            <magic:GradientStop Color="{StaticResource frameColor}" />
+                        </magic:LinearGradient>
+                    </magic:GradientView>
+
+                   <Button HeightRequest="120" Command="{Binding }" BorderColor="Transparent" BackgroundColor="Transparent" Margin="50,0,0,0" FontAttributes="Bold" FontSize="Large" Text="View Location Data" VerticalOptions="Center" HorizontalOptions="Center"></Button>
+                    <Image Margin="30,0,0,0" HorizontalOptions="Start" Source="location.png"/>
+                </Grid>
+
+              </Frame>
+
+            <!--https://www.tutsplanet.com/introduction-to-magic-gradients-in-xamarin-forms/-->
+             <Frame HeightRequest="120" CornerRadius="12" Padding="0">
+
+                <Grid>
+                    <magic:GradientView>
+                        <magic:LinearGradient Angle="45">
+                            <magic:GradientStop Color="MediumPurple" />
+                            <magic:GradientStop Color="{StaticResource frameColor}" />
+                        </magic:LinearGradient>
+                    </magic:GradientView>
+
+                    <Button HeightRequest="120" Command="{Binding NavigateToSecurityCommand}" BorderColor="Transparent" BackgroundColor="Transparent" Margin="50,0,0,0" FontAttributes="Bold" FontSize="Large" Text="View Security Data" VerticalOptions="Center" HorizontalOptions="Center"></Button>
+                    <Image Margin="30,0,0,0" HorizontalOptions="Start" Source="security.png"/>
+                </Grid>
+
+              </Frame>
+
+           
+        </StackLayout>
+      
+    </ContentPage.Content>
+</ContentPage>
